@@ -1,0 +1,63 @@
+
+
+.tableContainer{
+    
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    /* border: 1px black solid; */
+    width: 100%;     
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+   
+}
+
+/* @media only screen and (max-width: 762px) {
+  .tableContainer{
+      display: flex;
+     
+      
+  }
+} */
+
+/* .tableContainer TableContainer{
+    max-width: 75vw;
+   
+} */
+
+.projectHeader{
+    display: flex;
+    justify-content: center;
+    font-size: 26px;
+    font-weight: 400;
+
+}
+
+.viewButton {
+    margin:5px;
+}
+
+.deleteButton{
+margin: 5px;
+}
+
+
+.addProject{
+    border:none;
+    background-color: royalblue;
+    border:1px lightgrey;
+    height: 80%;
+}
+
+.footerContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   
+}
+
+
+

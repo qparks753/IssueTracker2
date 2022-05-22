@@ -1,22 +1,26 @@
 import React from "react";
-
+import Navbar from "../Components/Navbar/Navbar";
+import ProjectsTable from "../Components/Projects/ProjectsTable";
+import { Type } from "../Components/Charts/Type.tsx";
 import "./Home.scss"
+import { Priority } from "../Components/Charts/Priority.tsx";
+import { Status } from "../Components/Charts/Status.tsx";
 
 function Home() {
   return (
-    <div className="pagecontainenr">
-      <div className="Sidebar">
-        
+    <div className="pagecontainer">
+      <Navbar/>
+      <ProjectsTable/>
+      <div className="chartContainer">
+      <Status />
+      <Type />
+      <Priority/>
       </div>
+    
 
-      <div className="Homecontainer">
-        Navbar
-        <div className="Projectcontainer">
-         Hello Govenor
-        </div>
-        <div className="charts">Charts</div>
-      </div>
     </div>
+
+    
   );
 }
 

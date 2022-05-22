@@ -1,0 +1,25 @@
+
+
+.collapseBtn{
+    margin: 5px ;
+    background-color:white;
+   
+}
+
+li{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    
+}
+
+li:hover{
+    background-color: lightblue;
+    border-radius: 7px;
+    
+
+}
+
+li box-icon{
+    margin-right: 10px;
+}

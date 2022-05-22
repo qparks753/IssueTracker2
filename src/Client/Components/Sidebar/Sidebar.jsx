@@ -1,42 +1,123 @@
 import React from "react";
-import "./Sidebar.scss";
-
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap";
+import "./Sidebar.css";
 
 const Sidebar = () => {
-
-
-
   return (
-    <div className="Sidebar">
-      <div className="logo">
-        <box-icon className="Sidebarimg" type="solid" name="bug"></box-icon>
-        <span>Issue Tracker</span>
-      </div>
+    <div>
+      {/* <a
+        class="btn btn-primary"
+        data-bs-toggle="offcanvas"
+        href="#offcanvasExample"
+        role="button"
+        aria-controls="offcanvasExample"
+      >
+        Link with href
+      </a> */}
+      <button
+        class="btn btn-primary collapseBtn"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasExample"
+        aria-controls="offcanvasExample"
+      >
+        
+        {/* Button with data-bs-target */}
+        <box-icon name='menu'></box-icon>
+      </button>
 
-      <div className="menu">
-        <div className="menuitem">
-          <box-icon name="home-alt"></box-icon>
-          <span>Dashboard</span>
+      <div
+        class="offcanvas offcanvas-start"
+        tabindex="-1"
+        id="offcanvasExample"
+        aria-labelledby="offcanvasExampleLabel"
+      >
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+            Issue Tracker
+          </h5>
+          <button
+            type="button"
+            class="btn-close text-reset"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"
+          ></button>
         </div>
+        <div class="offcanvas-body">
+          <div>
+            {/* Some text as placeholder. In real life you can have the elements you
+            have chosen. Like, text, images, lists, etc. */}
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/home" >
+                <box-icon type='solid' name='dashboard'></box-icon>
+                  Dashboard
+                </a>
+              </li>
 
-        <div className="menuitem">
-         <box-icon name='user'></box-icon>
-            <span>Users</span>
-          </div>
+              <li class="nav-item">
+                <a class="nav-link" href="/home">
+                <box-icon name='user' type='solid' ></box-icon>
+                  Users
+                </a>
+              </li>
 
-          <div className="menuitem">
-          <box-icon name='message-alt-edit'></box-icon>
-            <span>Tickets</span>
-          </div>
+              <li class="nav-item">
+                <a class="nav-link" href="/home">
+                <box-icon type='solid' name='message-square-detail'></box-icon>
+                  Tickets
+                </a>
+              </li>
 
-          <div className="menuitem">
-          <box-icon name='user-circle'></box-icon>
-            <span>Profile</span>
+              <li class="nav-item">
+                <a class="nav-link" href="/home">
+                <box-icon name='user-circle' type='solid' ></box-icon>
+                  Profile
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a
+                  class="nav-link disabled"
+                  href="/home"
+                  tabindex="-1"
+                  aria-disabled="true"
+                >
+                <box-icon type='solid' name='log-out-circle'></box-icon>
+                  Log Out
+                </a>
+              </li>
+            </ul>
           </div>
-          <div className="logout">
-          <box-icon name='log-out'></box-icon>
-            <span>Log Out</span>
+          <div class="dropdown mt-3">
+            {/* <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton"
+              data-bs-toggle="dropdown"
+            >
+              Dropdown button
+            </button> */}
+            {/* <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li>
+                <a class="dropdown-item" href="#">
+                  Action
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">
+                  Another action
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#">
+                  Something else here
+                </a>
+              </li>
+            </ul> */}
           </div>
+        </div>
       </div>
     </div>
   );

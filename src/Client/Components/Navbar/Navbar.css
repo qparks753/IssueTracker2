@@ -1,0 +1,19 @@
+.Navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: royalblue;
+}
+.Sidebar{
+    margin-left:4rem;
+}
+
+.logo {
+    /* margin-right: 25px; */
+    margin-right: 4rem;
+    margin-left:10px;
+    font-size: 20px;
+    font-weight: 300;
+    font-family: 'Inter', sans-serif;
+    color:black;
+}

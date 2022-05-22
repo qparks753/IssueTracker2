@@ -6,6 +6,7 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
+import Updateproject from "./Client/Pages/Projects/Updateproject";
 
 
 
@@ -22,6 +23,8 @@ function App() {
           <Route index element={<Home />} />
          </Route>
          <Route path="/projects/addproject" element ={<AddProject />}/>
+         <Route path="/projects/updateproject" element ={<Updateproject />}/>
+
 
         </Routes>
         </BrowserRouter>

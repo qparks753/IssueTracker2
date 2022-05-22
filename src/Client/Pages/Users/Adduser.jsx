@@ -1,15 +1,14 @@
 import React from 'react'
 import Navbar from "../../Components/Navbar/Navbar"
-import Userscomp from '../../Components/Users/Users/Userscomp.jsx'
+import Addusercomp from "../../Components/Users/Adduser/Addusercomp"
 
-const Users = () => {
+function Adduser() {
   return (
     <div>
       <Navbar/>
-      <Userscomp/>
-
+      <Addusercomp/>
     </div>
   )
 }
 
-export default Users
+export default Adduser

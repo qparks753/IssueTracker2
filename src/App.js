@@ -7,6 +7,9 @@ import {
     Route,
 } from "react-router-dom";
 import Updateproject from "./Client/Pages/Projects/Updateproject";
+import Users from "./Client/Pages/Users/Users";
+import Updateuser from "./Client/Pages/Users/Updateuser"
+import Adduser from "./Client/Pages/Users/Adduser";
 
 
 
@@ -24,6 +27,13 @@ function App() {
          </Route>
          <Route path="/projects/addproject" element ={<AddProject />}/>
          <Route path="/projects/updateproject" element ={<Updateproject />}/>
+
+
+         {/*Users*/}
+         <Route path="/users" element ={<Users />}/>
+         <Route path="/users/updateuser" element ={<Updateuser />}/>
+         <Route path="/users/adduser" element ={<Adduser />}/>
+         
 
 
         </Routes>

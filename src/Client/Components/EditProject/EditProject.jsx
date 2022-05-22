@@ -21,7 +21,7 @@ const EditProject = () => {
                 <TextField
                   autoComplete="given-name"
                   name="Project"
-                  required
+                  
                   fullWidth
                   id="Project"
                   label="Project Title"
@@ -34,7 +34,7 @@ const EditProject = () => {
                
               <Grid item xs={5} >
                 <TextField
-                  required
+                  
                   fullWidth
                   id="Contributors"
                   label="Contributors"
@@ -48,7 +48,7 @@ const EditProject = () => {
 
               <Grid item xs={10} >
                 <TextField
-                  required
+                  
                   fullWidth
                   id="filled-multiline-flexible"
                   label="Project Description"

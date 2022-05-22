@@ -10,7 +10,9 @@ import Updateproject from "./Client/Pages/Projects/Updateproject";
 import Users from "./Client/Pages/Users/Users";
 import Updateuser from "./Client/Pages/Users/Updateuser"
 import Adduser from "./Client/Pages/Users/Adduser";
-
+import Tickets from "./Client/Pages/Tickets/Tickets";
+import Addticket from "./Client/Pages/Tickets/Addticket";
+import Updateticket from "./Client/Pages/Tickets/Updateticket";
 
 
 
@@ -34,6 +36,10 @@ function App() {
          <Route path="/users/updateuser" element ={<Updateuser />}/>
          <Route path="/users/adduser" element ={<Adduser />}/>
          
+         {/*Tickets*/}
+         <Route path="/tickets" element ={<Tickets />}/>
+         <Route path="/tickets/updateticket" element ={<Updateticket />}/>
+         <Route path="/tickets/addticket" element ={<Addticket />}/>
 
 
         </Routes>

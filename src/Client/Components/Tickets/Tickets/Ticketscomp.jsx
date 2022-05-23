@@ -10,18 +10,19 @@ import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
 import TablePagination from "@mui/material/TablePagination";
 import TableFooter from "@mui/material/TableFooter";
+import axios from "axios"
 
-function createData(ID, Ticket_Title, Author, Description, Ticket_status, Ticket_type, Priority) {
-  return { ID,Ticket_Title, Author, Description, Ticket_status, Ticket_type, Priority };
-}
+// function createData(ID, Ticket_Title, Author, Description, Ticket_status, Ticket_type, Priority) {
+//   return { ID,Ticket_Title, Author, Description, Ticket_status, Ticket_type, Priority };
+// }
 
-const rows = [
-  createData(1, "Error:3433", "Jonathan Lee", "Error distorts the page styling and prevents relevant data from loading", "OPEN", "Issue", "High"),
-  createData(2, "Error:3433", "Jonathan Lee", "Error distorts the page styling and prevents relevant data from loading", "OPEN", "Issue", "High"),
-  createData(3, "Error:3433", "Jonathan Lee", "Error distorts the page styling and prevents relevant data from loading", "OPEN", "Issue", "High"),
-  createData(4, "Error:3433", "Jonathan Lee", "Error distorts the page styling and prevents relevant data from loading", "OPEN", "Issue", "High"),
-  createData(5, "Error:3433", "Jonathan Lee", "Error distorts the page styling and prevents relevant data from loading", "OPEN", "Issue", "High")
-];
+// const rows = [
+//   createData(1, "Error:3433", "Jonathan Lee", "Error distorts the page styling and prevents relevant data from loading", "OPEN", "Issue", "High"),
+//   createData(2, "Error:3433", "Jonathan Lee", "Error distorts the page styling and prevents relevant data from loading", "OPEN", "Issue", "High"),
+//   createData(3, "Error:3433", "Jonathan Lee", "Error distorts the page styling and prevents relevant data from loading", "OPEN", "Issue", "High"),
+//   createData(4, "Error:3433", "Jonathan Lee", "Error distorts the page styling and prevents relevant data from loading", "OPEN", "Issue", "High"),
+//   createData(5, "Error:3433", "Jonathan Lee", "Error distorts the page styling and prevents relevant data from loading", "OPEN", "Issue", "High")
+// ];
 
 function Ticketscomp() {
   const [tickets, setTickets] = useState([]);
@@ -37,9 +38,21 @@ function Ticketscomp() {
     setPage(0);
   };
 
-  useEffect(() => {
-    setTickets(rows);
-  }, []);
+  useEffect(()=>{
+
+    axios.get("http://localhost:3001/api/tickets/allTickets")
+    .then((response)=>{
+     setTickets(response.data)
+    
+    }) 
+ },[])
+
+ function DeleteTicket(ticket){
+  axios.delete(`http://localhost:3001/api/tickets/${ticket.id}`)
+  .then((response)=>{
+    console.log(response)
+})
+}
 
   return (
     <div>
@@ -74,26 +87,26 @@ function Ticketscomp() {
               <TableBody>
                 {tickets
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((project) => (
-                    <TableRow key={project.ID}>
-                      <TableCell align="center">{project.ID}</TableCell>
+                  .map((ticket) => (
+                    <TableRow key={ticket.id}>
+                      <TableCell align="center">{ticket.id}</TableCell>
                       <TableCell align="center" component="th" scope="row">
-                        {project.Ticket_Title}
+                        {ticket.Ticket_Title}
                       </TableCell>
                       <TableCell align="center">
-                        {project.Author}
+                        {ticket.Author}
                       </TableCell>
                       <TableCell align="center">
-                        {project.Description}
+                        {ticket.Description}
                       </TableCell>
                       <TableCell align="center">
-                        {project.Ticket_status}
+                        {ticket.Ticket_status}
                       </TableCell>
                       <TableCell align="center">
-                        {project.Ticket_type}
+                        {ticket.Ticket_type}
                       </TableCell>
                       <TableCell align="center">
-                        {project.Priority}
+                        {ticket.Priority}
                       </TableCell>
                       <TableCell align="center">
                         {
@@ -106,12 +119,14 @@ function Ticketscomp() {
 
                             <Link
                               className="viewButton"
-                              // to={`/projects/updateproject/${project.id}`}
-                              to={`/home`}
+                               to={`/tickets/updateticket/${ticket.id}`}
+                             
                             >
                               Edit
                             </Link>
-                            <div className="deleteButton "> Delete</div>
+                            <div className="deleteButton ">
+                            <button onClick={()=> DeleteTicket(ticket)}>Delete</button> 
+                               </div>
                           </div>
                         }
                       </TableCell>
@@ -125,7 +140,7 @@ function Ticketscomp() {
                   <TablePagination
                     rowsPerPageOptions={[5, 10, 15]}
                     component="div"
-                    count={rows.length}
+                    count={tickets.length}
                     rowsPerPage={rowsPerPage}
                     page={page}
                     onPageChange={handleChangePage}
@@ -133,7 +148,7 @@ function Ticketscomp() {
                   />
                 </div>
                 <div className="addTicketbtn">
-                  <a className="addTickerbtn" href="/home">
+                  <a className="addTickerbtn" href="/tickets/addTicket">
                     Add Ticket
                   </a>
                 </div>

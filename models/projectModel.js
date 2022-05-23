@@ -10,8 +10,8 @@ module.exports = (sequelize, Sequelize) => {
         type: Sequelize.STRING,
       },
       Project_Description: {
-        type: Sequelize.TEXT,
-      },
+        type: Sequelize.TEXT, //Text
+      }
     }
     ,{
       timestamps: false,

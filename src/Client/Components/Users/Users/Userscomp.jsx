@@ -10,17 +10,18 @@ import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
 import TablePagination from "@mui/material/TablePagination";
 import TableFooter from "@mui/material/TableFooter";
+import axios from "axios"
 
-function createData(ID, FirstName, LastName, Email, Phone) {
-  return { ID, FirstName, LastName, Email, Phone };
-}
-
-const rows = [
-  createData(1, "Jonathan", "Lee", "JLee4@AOL.com", "888-888-4444"),
-  createData(2, "Jonathan", "Lee", "JLee4@AOL.com","888-888-4444"),
-  createData(3, "Jonathan", "Lee", "JLee4@AOL.com","888-888-4444"),
-  createData(4, "Jonathan", "Lee", "JLee4@AOL.com","888-888-4444"),
-];
+// function createData(ID, FirstName, LastName, Email, Phone) {
+//   return { ID, FirstName, LastName, Email, Phone };
+// }
+  
+// const rows = [
+//   createData(1, "Jonathan", "Lee", "JLee4@AOL.com", "888-888-4444"),
+//   createData(2, "Jonathan", "Lee", "JLee4@AOL.com","888-888-4444"),
+//   createData(3, "Jonathan", "Lee", "JLee4@AOL.com","888-888-4444"),
+//   createData(4, "Jonathan", "Lee", "JLee4@AOL.com","888-888-4444"),
+// ];
 
 function Userscomp() {
   const [users, setUsers] = useState([]);
@@ -36,9 +37,24 @@ function Userscomp() {
     setPage(0);
   };
 
-  useEffect(() => {
-    setUsers(rows);
-  }, []);
+  useEffect(()=>{
+
+    axios.get("http://localhost:3001/api/users/allUsers")
+    .then((response)=>{
+     setUsers(response.data)
+    
+    }) 
+ },[])
+
+ function DeleteUser(user){
+  axios.delete(`http://localhost:3001/api/users/${user.id}`)
+  .then((response)=>{
+    console.log(response)
+})
+}
+
+
+
 
   return (
     <div>
@@ -71,20 +87,20 @@ function Userscomp() {
               <TableBody>
                 {users
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map((project) => (
-                    <TableRow key={project.ID}>
-                      <TableCell align="center">{project.ID}</TableCell>
+                  .map((user) => (
+                    <TableRow key={user.id}>
+                      <TableCell align="center">{user.id}</TableCell>
                       <TableCell align="center" component="th" scope="row">
-                        {project.FirstName}
+                        {user.FirstName}
                       </TableCell>
                       <TableCell align="center">
-                        {project.LastName}
+                        {user.LastName}
                       </TableCell>
                       <TableCell align="center">
-                        {project.Email}
+                        {user.Email}
                       </TableCell>
                       <TableCell align="center">
-                        {project.Phone}
+                        {user.Phone}
                       </TableCell>
                       <TableCell align="center">
                         {
@@ -97,12 +113,14 @@ function Userscomp() {
 
                             <Link
                               className="viewButton"
-                              // to={`/projects/updateproject/${project.id}`}
-                              to={`/home`}
+                               to={`/users/updateuser/${user.id}`}
+                             
                             >
                               Edit
                             </Link>
-                            <div className="deleteButton "> Delete</div>
+                            <div className="deleteButton ">
+                            <button onClick={()=> DeleteUser(user)}>Delete</button> 
+                               </div>
                           </div>
                         }
                       </TableCell>
@@ -116,7 +134,7 @@ function Userscomp() {
                   <TablePagination
                     rowsPerPageOptions={[5, 10, 15]}
                     component="div"
-                    count={rows.length}
+                    count={users.length}
                     rowsPerPage={rowsPerPage}
                     page={page}
                     onPageChange={handleChangePage}
@@ -124,7 +142,7 @@ function Userscomp() {
                   />
                 </div>
                 <div className="addUserbtn">
-                  <a className="addUserbtn" href="/home">
+                  <a className="addUserbtn" href="/users/addUser">
                     Add User
                   </a>
                 </div>

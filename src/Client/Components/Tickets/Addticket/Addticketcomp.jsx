@@ -4,6 +4,7 @@ import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
+import axios from "axios"
 
 function Addticketcomp() {
   const Status = [
@@ -58,6 +59,23 @@ function Addticketcomp() {
   const [status, setStatus] = useState("OPEN");
   const [type, setType] = useState("BUG");
   const [priority, setPriority] = useState("LOW");
+  const [title, setTitle] = useState("");
+ const [author, setAuthor] = useState("");
+ const [description, setDescription] = useState("");
+
+
+ function postTicket(){
+  axios.post("http://localhost:3001/api/tickets/addTickets",{
+    Ticket_Title:title,
+    Author:author,
+    Description:description,
+    Ticket_status:status,
+    Ticket_type:type,
+    Priority:priority
+
+
+  })
+}
 
   const handleChange1 = (event) => {
     setStatus(event.target.value);
@@ -104,7 +122,7 @@ function Addticketcomp() {
                     id="Ticket_Title"
                     label="Ticket Title"
                     autoFocus
-                    // onChange={handleProjectChange}
+                    onChange={(e)=>{setTitle(e.target.value)}}
                   />
                 </Grid>
 
@@ -117,7 +135,7 @@ function Addticketcomp() {
                     name="Author"
                     autoComplete="Author"
 
-                    // onChange={handleContributorsChange}
+                    onChange={(e)=>{setAuthor(e.target.value)}}
                   />
                 </Grid>
 
@@ -131,7 +149,7 @@ function Addticketcomp() {
                     autoComplete="Description"
                     multiline
                     rows={3}
-                    // onChange={handleContributorsChange}
+                    onChange={(e)=>{setDescription(e.target.value)}}
                   />
                 </Grid>
 
@@ -198,7 +216,7 @@ function Addticketcomp() {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
                 style={{ maxWidth: "30%" }}
-                // onClick={handleAddSubmit}
+                onClick={postTicket}
               >
                 Add Ticket
               </Button>

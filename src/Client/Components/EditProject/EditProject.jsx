@@ -1,11 +1,27 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
-
+import axios from 'axios';
+import {useParams}from "react-router-dom"
 
 const EditProject = () => {
+  const [project, setProject] = useState("");
+ const [contributors, setContributors] = useState("");
+ const [description, setDescription] = useState("");
+
+ const id = useParams();
+ 
+
+  function updateProject(){
+    axios.put(`http://localhost:3001/api/projects/${id}`,{
+      Project: project,
+      Contributors: contributors,
+      Project_Description:description
+
+    })
+  }
 
 
   return (
@@ -26,7 +42,7 @@ const EditProject = () => {
                   id="Project"
                   label="Project Title"
                   autoFocus
-                  // onChange={handleProjectChange}
+                   onChange={(e)=>{setProject(e.target.value)}}
                 />
               </Grid>
 
@@ -41,7 +57,7 @@ const EditProject = () => {
                   name="Contributors"
                   autoComplete="Contributors"
                   
-                  // onChange={handleContributorsChange}
+                  onChange={(e)=>{setContributors(e.target.value)}}
                  
                 />
               </Grid>
@@ -53,12 +69,12 @@ const EditProject = () => {
                   id="filled-multiline-flexible"
                   label="Project Description"
                   name="Project_Description"
-                  autoComplete="Contributors"
+                  autoComplete="Project Description"
                   multiline
                   rows={6}
                 //   defaultValue="hello"
                   
-                  // onChange={handleContributorsChange}
+                onChange={(e)=>{setDescription(e.target.value)}}
                  
                 />
               </Grid>
@@ -73,7 +89,7 @@ const EditProject = () => {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
               style={{maxWidth:"35%"}}
-              // onClick={handleAddSubmit}
+               onClick={updateProject}
               
             >
               Update Project

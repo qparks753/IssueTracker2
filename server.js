@@ -8,7 +8,7 @@ const path = require("path");
 const app = express();
 
 var corsOptions = {
-//   origin: "http://localhost:3001"
+  // origin: "http://localhost:3001"
 origin: "*"
 };
 
@@ -53,7 +53,7 @@ app.use("/api/users", router3)
 
 
 // set port, listen for requests
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });

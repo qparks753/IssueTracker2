@@ -1,10 +1,25 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
+import axios from "axios";
 
 function Addusercomp() {
+  const [firstName, setFirstName] = useState("");
+ const [lastName, setLastName] = useState("");
+ const [email, setEmail] = useState("");
+ const [phone, setPhone] = useState("");
+  
+ function postUser(){
+  axios.post("http://localhost:3001/api/users/addUser",{
+    FirstName:firstName,
+    LastName:lastName,
+    Email:email,
+    Phone: phone
+  })
+}
+
   return (
     <div>
       <div className="formContainer" style={{display:"flex", justifyContent:"center", width:"100%", marginLeft:"30px"}}>
@@ -24,7 +39,7 @@ function Addusercomp() {
                  id="FirstName"
                  label="First Name"
                  autoFocus
-                 // onChange={handleProjectChange}
+                 onChange={(e)=>{setFirstName(e.target.value)}}
                />
              </Grid>
 
@@ -39,7 +54,7 @@ function Addusercomp() {
                  name="Last Name"
                  autoComplete="Last Name"
                  
-                 // onChange={handleContributorsChange}
+                 onChange={(e)=>{setLastName(e.target.value)}}
                 
                />
              </Grid>
@@ -54,7 +69,7 @@ function Addusercomp() {
                  name="Email"
                  autoComplete="Email"
                  
-                 // onChange={handleContributorsChange}
+                 onChange={(e)=>{setEmail(e.target.value)}}
                 
                />
              </Grid>
@@ -69,7 +84,7 @@ function Addusercomp() {
                  name="Phone"
                  autoComplete="Phone"
                  
-                 // onChange={handleContributorsChange}
+                 onChange={(e)=>{setPhone(e.target.value)}}
                 
                />
              </Grid>
@@ -99,7 +114,7 @@ function Addusercomp() {
              variant="contained"
              sx={{ mt: 3, mb: 2 }}
              style={{maxWidth:"30%"}}
-             // onClick={handleAddSubmit}
+             onClick={postUser}
            >
              Add User
            </Button>

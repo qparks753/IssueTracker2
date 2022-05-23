@@ -1,12 +1,24 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
-
+import axios from 'axios';
+ 
 
 const AdditionPage = () => {
 
+  const [project, setProject] = useState("");
+ const [contributors, setContributors] = useState("");
+ const [description, setDescription] = useState("");
+
+ function postProject(){
+    axios.post("http://localhost:3001/api/projects/addProjects",{
+      Project:project,
+      Contributors:contributors,
+      Project_Description:description
+    })
+ }
 
   return (
    <div className="formContainer" style={{display:"flex", justifyContent:"center", width:"100%", marginLeft:"30px"}}>
@@ -26,7 +38,7 @@ const AdditionPage = () => {
                   id="Project"
                   label="Project Title"
                   autoFocus
-                  // onChange={handleProjectChange}
+                   onChange={(e)=>{setProject(e.target.value)}}
                 />
               </Grid>
 
@@ -41,7 +53,7 @@ const AdditionPage = () => {
                   name="Contributors"
                   autoComplete="Contributors"
                   
-                  // onChange={handleContributorsChange}
+                  onChange={(e)=>{setContributors(e.target.value)}}
                  
                 />
               </Grid>
@@ -56,7 +68,7 @@ const AdditionPage = () => {
                   autoComplete="Contributors"
                   multiline
                   rows={6}
-                  // onChange={handleContributorsChange}
+                  onChange={(e)=>{setDescription(e.target.value)}}
                  
                 />
               </Grid>
@@ -71,7 +83,7 @@ const AdditionPage = () => {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
               style={{maxWidth:"30%"}}
-              // onClick={handleAddSubmit}
+              onClick={postProject}
             >
               Add Project
             </Button>

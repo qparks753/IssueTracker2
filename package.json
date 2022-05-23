@@ -32,13 +32,15 @@
   },
   "scripts": {
     "watch:build": "npx webpack -w",
-    "watch:server": " dist/server.js",
+    "watch:server": " node server.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": " nodemon server.js",
-    "app":"npm-run-all --parallel watch:*"
+    "server": "nodemon server.js",
+    "app": "npm-run-all --parallel start server"
+  
+  
   },
   "eslintConfig": {
     "extends": [

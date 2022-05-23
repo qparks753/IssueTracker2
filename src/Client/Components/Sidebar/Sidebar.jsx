@@ -34,7 +34,7 @@ const Sidebar = () => {
         aria-labelledby="offcanvasExampleLabel"
       >
         <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel" style={{marginLeft:"70px"}}>
             Issue Tracker
           </h5>
           <button
@@ -50,28 +50,28 @@ const Sidebar = () => {
             have chosen. Like, text, images, lists, etc. */}
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="/home" >
+                <a class="nav-link active" aria-current="page" href="/" >
                 <box-icon type='solid' name='dashboard'></box-icon>
                   Dashboard
                 </a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="/home">
+                <a class="nav-link" href="/users">
                 <box-icon name='user' type='solid' ></box-icon>
                   Users
                 </a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="/home">
+                <a class="nav-link" href="/tickets">
                 <box-icon type='solid' name='message-square-detail'></box-icon>
                   Tickets
                 </a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="/home">
+                <a class="nav-link" href="/profile">
                 <box-icon name='user-circle' type='solid' ></box-icon>
                   Profile
                 </a>

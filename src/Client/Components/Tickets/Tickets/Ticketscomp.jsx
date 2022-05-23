@@ -55,7 +55,7 @@ function Ticketscomp() {
             component={Paper}
           >
             <div className="ticketHeader">
-              <span>Users</span>
+              <span>Tickets</span>
             </div>
 
             <Table aria-label="simple table">

@@ -2,7 +2,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: royalblue;
+    /* background-color: royalblue; */
+    background-color: white;
 }
 .Sidebar{
     margin-left:4rem;
@@ -17,3 +18,12 @@
     font-family: 'Inter', sans-serif;
     color:black;
 }
+
+body{
+   
+     background: rgba(226, 239, 248, 0.5);
+    color: rgba(226, 239, 248, 0.5);
+
+
+
+} 

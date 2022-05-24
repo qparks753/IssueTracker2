@@ -98,7 +98,7 @@ const ProjectsTable = () => {
                   <TableCell align="center" component="th" scope="row">
                     {project.Project}
                   </TableCell>
-                  <TableCell align="left">
+                  <TableCell align="center">
                     {project.Project_Description}
                   </TableCell>
                   <TableCell align="center">{project.Contributors}</TableCell>

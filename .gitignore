@@ -28,4 +28,4 @@ yarn-error.log*
 
 test.http
 
-sensitive.txt
+sdata.txt

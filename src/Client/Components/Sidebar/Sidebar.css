@@ -23,3 +23,9 @@ li:hover{
 li box-icon{
     margin-right: 10px;
 }
+
+.item{
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+ }

@@ -29,8 +29,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
   cookieSession({
-    name: REACT_APP_COOK_NAME,
-     secret: REACT_APP_COOK,
+    name: process.env.REACT_APP_COOK_NAME,
+     secret: process.env.REACT_APP_COOK,
     httpOnly:true
   })
 );
@@ -64,7 +64,7 @@ require("./Routes/authRouter")(app);
 require('./Routes/appuserRouter')(app)
 
 // set port, listen for requests
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });

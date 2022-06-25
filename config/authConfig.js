@@ -3,5 +3,5 @@ require("dotenv").config();
 
 module.exports = {
     
-    secret: REACT_APP_AUTH
+    secret: process.env.REACT_APP_AUTH
   };

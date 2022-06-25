@@ -2,11 +2,11 @@
 require("dotenv").config();
 
 module.exports = {
-    HOST: REACT_APP_HOST,
-    USER: REACT_APP_USER,
-    PASSWORD: REACT_APP_PASSWORD,
-    DB: REACT_APP_DBNAME,
-    dialect: REACT_APP_dialect,
+    HOST: process.env.REACT_APP_HOST,
+    USER: process.env.REACT_APP_USER,
+    PASSWORD: process.env.REACT_APP_PASSWORD,
+    DB: process.env.REACT_APP_DBNAME,
+    dialect: process.env.REACT_APP_dialect,
 
     pool: {
       max: 5,

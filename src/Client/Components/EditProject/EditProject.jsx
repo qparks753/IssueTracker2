@@ -1,31 +1,61 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import axios from 'axios';
-import {useParams}from "react-router-dom"
+import {useParams,useNavigate}from "react-router-dom"
 
 const EditProject = () => {
   const [project, setProject] = useState("");
  const [contributors, setContributors] = useState("");
  const [description, setDescription] = useState("");
+ const [projectData, setProjectData] = useState([]);
 
- const id = useParams();
- 
+ const projectID = useParams();
+
+
+ useEffect(()=>{
+
+  axios.get(`http://localhost:3001/api/projects/${projectID.id}`)
+  .then((response)=>{
+   setProjectData(response.data)
+   console.log(response.data)
+   
+  }) 
+
+},[projectID])
+
 
   function updateProject(){
-    axios.put(`http://localhost:3001/api/projects/${id}`,{
-      Project: project,
-      Contributors: contributors,
-      Project_Description:description
+    const data ={
+      "Project": project,
+      "Contributors": contributors,
+      "Project_Description": description
+    }
 
+    axios.put(`http://localhost:3001/api/projects/${projectID.id}`, data)
+    .then((data)=> {
+      console.log(data);
+      
+      })
+      .catch((err) =>{
+        console.log(err);
     })
+    
+    routeChange();
   }
+
+  let navigate = useNavigate(); 
+ const routeChange = () =>{ 
+   let path = `/projects`; 
+   navigate(path);
+ }
+
 
 
   return (
-   <div className="formContainer" style={{display:"flex", justifyContent:"center", width:"100%", marginLeft:"30px"}}>
+   <div className="formContainer" style={{display:"flex", justifyContent:"center", width:"100%", marginLeft:"30px", marginTop:"20px"}}>
     
      <Box component="form" sx={{ '& .MuiTextField-root': { m: 1 },}}>
      <div className="titleDiv" style={{display:"flex", justifyContent:"center", fontSize:"25px", marginRight:"100px"}} >Update Project</div>
@@ -43,6 +73,8 @@ const EditProject = () => {
                   label="Project Title"
                   autoFocus
                    onChange={(e)=>{setProject(e.target.value)}}
+                   placeholder={projectData.Project}
+                   InputLabelProps={{ shrink: true }}  
                 />
               </Grid>
 
@@ -56,7 +88,8 @@ const EditProject = () => {
                   label="Contributors"
                   name="Contributors"
                   autoComplete="Contributors"
-                  
+                  placeholder={projectData.Contributors}
+                  InputLabelProps={{ shrink: true }}  
                   onChange={(e)=>{setContributors(e.target.value)}}
                  
                 />
@@ -72,9 +105,9 @@ const EditProject = () => {
                   autoComplete="Project Description"
                   multiline
                   rows={6}
-                //   defaultValue="hello"
-                  
-                onChange={(e)=>{setDescription(e.target.value)}}
+                  placeholder={projectData.Project_Description}
+                  InputLabelProps={{ shrink: true }}  
+                  onChange={(e)=>{setDescription(e.target.value)}}
                  
                 />
               </Grid>
@@ -82,7 +115,7 @@ const EditProject = () => {
             </Grid>
             </div>
 
-           <div className="btndiv"  style={{display:"flex", justifyContent:"center"}}>
+           <div className="btndiv"  style={{display:"flex", justifyContent:"center", alignItems:"center", flexDirection:"column"}}>
             <Button
               type="submit"
               fullWidth
@@ -94,6 +127,9 @@ const EditProject = () => {
             >
               Update Project
             </Button>
+
+              <a style={{textDecoration:"none"}} href="/projects">Return</a>
+            
             </div>
   
           </Box>

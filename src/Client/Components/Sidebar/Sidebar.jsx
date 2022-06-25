@@ -30,24 +30,30 @@ const Sidebar = () => {
   };
 
   return (
-    <div>
+    <div className="sidebar-main-div" >
+      
       <button
         class="btn btn-primary collapseBtn"
         type="button"
         data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasExample"
         aria-controls="offcanvasExample"
+       
       >
         {/* Button with data-bs-target */}
-        <box-icon name="menu"></box-icon>
+        <box-icon  name="menu" color="white"  id="menu-collapse-btn"></box-icon>
+        
       </button>
-
+     
+      
+     
       <div
         class="offcanvas offcanvas-start"
         tabindex="-1"
         id="offcanvasExample"
         aria-labelledby="offcanvasExampleLabel"
       >
+         <div className="sidebarContainer">
         <div class="offcanvas-header">
           <h5
             class="offcanvas-title"
@@ -125,8 +131,8 @@ const Sidebar = () => {
                       aria-current="page"
                       href="/projects"
                     >
-                      <box-icon type="solid" name="dashboard"></box-icon>
-                      Dashboard
+                      <box-icon type="solid" color="#5c7cdb" name="dashboard"></box-icon>
+                      Projects 
                     </a>
                   </li>
                   {/* <li class="nav-item">
@@ -141,6 +147,7 @@ const Sidebar = () => {
                       <box-icon
                         type="solid"
                         name="message-square-detail"
+                        color="#5c7cdb"
                       ></box-icon>
                       Tickets
                     </a>
@@ -150,7 +157,7 @@ const Sidebar = () => {
                 <li class="nav-item" style={{ marginLeft: "10px" }}>
                   <a class="nav-link" href="/users">
                   
-                  <box-icon type='solid' name='user-plus'></box-icon>
+                  <box-icon type='solid' color="#5c7cdb" name='user-plus'></box-icon>
                     {/* <box-icon name="user" type="solid"></box-icon> */}
                     
                     Users
@@ -158,22 +165,21 @@ const Sidebar = () => {
                 </li>
               )}
                  
-
-
                   <li className="nav-item" style={{ marginLeft: "10px" }}>
                     <Link to={"/profile"} className="nav-link">
-                      <box-icon name="user-circle" type="solid"></box-icon>
+                      <box-icon name="user-circle" color="#5c7cdb" type="solid"></box-icon>
                       {currentUser.username}
                     </Link>
                   </li>
+                  
                   <li className="nav-item">
                     <a
                       href="/login"
-                      className="nav-link"
+                      className="nav-link logout"
                       onClick={logOut}
-                      style={{ marginLeft: "10px" }}
+                      // style={{ marginLeft: "10px" }}
                     >
-                      <box-icon type="solid" name="log-out-circle"></box-icon>
+                      <box-icon  type="solid" color="#5c7cdb" name="log-out-circle"></box-icon>
                       Log Out
                     </a>
                   </li>
@@ -182,13 +188,13 @@ const Sidebar = () => {
                 <div className="navbar-nav ml-auto">
                   <li className="nav-item item">
                     <Link to={"/login"} className="nav-link">
-                      <box-icon type="solid" name="log-in-circle"></box-icon>
+                      <box-icon type="solid" color="#5c7cdb" name="log-in-circle"></box-icon>
                       Log In
                     </Link>
                   </li>
                   <li className="nav-item item">
                     <Link to={"/register"} className="nav-link">
-                      <box-icon name="task"></box-icon>
+                      <box-icon name="task" color="#5c7cdb"></box-icon>
                       Sign Up
                     </Link>
                   </li>
@@ -239,6 +245,7 @@ const Sidebar = () => {
             </ul> */}
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

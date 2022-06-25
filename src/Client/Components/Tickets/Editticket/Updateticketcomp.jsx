@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
+import {useParams,useNavigate} from "react-router-dom";
+import axios from "axios";
 
 function Updateticketcomp() {
   const Status = [
@@ -69,6 +71,69 @@ function Updateticketcomp() {
     setPriority(event.target.value);
   };
 
+  const handleChange4 = (event) => {
+    setTitle(event.target.value);
+  };
+  const handleChange5 = (event) => {
+    setAuthor(event.target.value);
+  };
+  const handleChange6 = (event) => {
+    setDescription(event.target.value);
+  };
+  
+  
+
+  const ticketID = useParams();
+   
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [description, setDescription] = useState("");
+  const [ticketData, setTicketData] = useState([]);
+
+  useEffect(()=>{
+
+    axios.get(`http://localhost:3001/api/tickets/${ticketID.id}`)
+    .then((response)=>{
+     setTicketData(response.data)
+     
+     
+    }) 
+
+ },[ticketID])
+
+ function updateTicket () {
+  const data ={
+    "Ticket_Title": title,
+    "Author": author,
+    "Description": description,
+    "Ticket_status": status,
+    "Ticket_type": type,
+    "Priority": priority
+
+  }
+
+ axios.put(`http://localhost:3001/api/tickets/${ticketID.id}`, data)
+ .then((data)=> {
+   console.log(data);
+   
+   })
+   .catch((err) =>{
+     console.log(err);
+ })
+
+ routeChange();
+
+}
+
+let navigate = useNavigate(); 
+ const routeChange = () =>{ 
+   let path = `/tickets`; 
+   navigate(path);
+ }
+
+
+
+
   return (
     <div>
       <div
@@ -78,6 +143,7 @@ function Updateticketcomp() {
           justifyContent: "center",
           width: "100%",
           marginLeft: "30px",
+          marginTop:"25px"
         }}
       >
         <Box component="form" sx={{ "& .MuiTextField-root": { m: 1 } }}>
@@ -104,6 +170,9 @@ function Updateticketcomp() {
                     id="Ticket_Title"
                     label="Ticket Title"
                     autoFocus
+                    placeholder={ticketData.Ticket_Title}
+                    onChange={handleChange4}
+                    InputLabelProps={{ shrink: true }}
                     // onChange={handleProjectChange}
                   />
                 </Grid>
@@ -116,6 +185,9 @@ function Updateticketcomp() {
                     label="Author"
                     name="Author"
                     autoComplete="Author"
+                    placeholder={ticketData.Author}
+                    onChange={handleChange5}
+                    InputLabelProps={{ shrink: true }}
 
                     // onChange={handleContributorsChange}
                   />
@@ -131,6 +203,9 @@ function Updateticketcomp() {
                     autoComplete="Description"
                     multiline
                     rows={3}
+                    placeholder={ticketData.Description}
+                    onChange={handleChange6}
+                    InputLabelProps={{ shrink: true }}
                     // onChange={handleContributorsChange}
                   />
                 </Grid>
@@ -190,7 +265,7 @@ function Updateticketcomp() {
 
             <div
               className="btndiv"
-              style={{ display: "flex", justifyContent: "center" }}
+              style={{ display: "flex",alignItems:"center",flexDirection:"column", justifyContent: "center" }}
             >
               <Button
                 type="submit"
@@ -198,10 +273,12 @@ function Updateticketcomp() {
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
                 style={{ maxWidth: "30%" }}
-                // onClick={handleAddSubmit}
+                onClick={updateTicket}
               >
                 Update Ticket
               </Button>
+              <a style={{textDecoration:"none"}} href="/tickets">Return</a>
+              
             </div>
           </Box>
         </Box>

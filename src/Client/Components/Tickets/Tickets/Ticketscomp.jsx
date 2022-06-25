@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState} from "react";
 import "./Ticketscomp.css";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -12,17 +12,6 @@ import TablePagination from "@mui/material/TablePagination";
 import TableFooter from "@mui/material/TableFooter";
 import axios from "axios"
 
-// function createData(ID, Ticket_Title, Author, Description, Ticket_status, Ticket_type, Priority) {
-//   return { ID,Ticket_Title, Author, Description, Ticket_status, Ticket_type, Priority };
-// }
-
-// const rows = [
-//   createData(1, "Error:3433", "Jonathan Lee", "Error distorts the page styling and prevents relevant data from loading", "OPEN", "Issue", "High"),
-//   createData(2, "Error:3433", "Jonathan Lee", "Error distorts the page styling and prevents relevant data from loading", "OPEN", "Issue", "High"),
-//   createData(3, "Error:3433", "Jonathan Lee", "Error distorts the page styling and prevents relevant data from loading", "OPEN", "Issue", "High"),
-//   createData(4, "Error:3433", "Jonathan Lee", "Error distorts the page styling and prevents relevant data from loading", "OPEN", "Issue", "High"),
-//   createData(5, "Error:3433", "Jonathan Lee", "Error distorts the page styling and prevents relevant data from loading", "OPEN", "Issue", "High")
-// ];
 
 function Ticketscomp() {
   const [tickets, setTickets] = useState([]);
@@ -47,11 +36,19 @@ function Ticketscomp() {
     }) 
  },[])
 
+
+
+
  function DeleteTicket(ticket){
   axios.delete(`http://localhost:3001/api/tickets/${ticket.id}`)
   .then((response)=>{
     console.log(response)
 })
+refreshPage();
+}
+
+const refreshPage = ()=>{
+  window.location.reload();
 }
 
   return (
@@ -63,7 +60,7 @@ function Ticketscomp() {
             style={{
               width: "100%",
 
-              border: "1px solid black",
+              // border: "1px solid black",
             }}
             component={Paper}
           >
@@ -122,10 +119,10 @@ function Ticketscomp() {
                                to={`/tickets/updateticket/${ticket.id}`}
                              
                             >
-                              Edit
+                              Update
                             </Link>
                             <div className="deleteButton ">
-                            <button onClick={()=> DeleteTicket(ticket)}>Delete</button> 
+                            <button class="deleteBtn" onClick={()=> DeleteTicket(ticket)}>Delete</button> 
                                </div>
                           </div>
                         }
@@ -148,7 +145,7 @@ function Ticketscomp() {
                   />
                 </div>
                 <div className="addTicketbtn">
-                  <a className="addTickerbtn" href="/tickets/addTicket">
+                  <a className="addTicketbtn" href="/tickets/addTicket">
                     Add Ticket
                   </a>
                 </div>

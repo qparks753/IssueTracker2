@@ -4,12 +4,14 @@ import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import axios from "axios";
+import {useNavigate} from "react-router-dom"
 
 function Addusercomp() {
   const [firstName, setFirstName] = useState("");
  const [lastName, setLastName] = useState("");
  const [email, setEmail] = useState("");
  const [phone, setPhone] = useState("");
+ 
   
  function postUser(){
   axios.post("http://localhost:3001/api/users/addUser",{
@@ -18,8 +20,14 @@ function Addusercomp() {
     Email:email,
     Phone: phone
   })
+  routeChange();
 }
 
+let navigate = useNavigate(); 
+ const routeChange = () =>{ 
+   let path = `/users`; 
+   navigate(path);
+ }
   return (
     <div>
       <div className="formContainer" style={{display:"flex", justifyContent:"center", width:"100%", marginLeft:"30px"}}>
@@ -107,7 +115,7 @@ function Addusercomp() {
            </Grid>
            </div>
 
-          <div className="btndiv"  style={{display:"flex", justifyContent:"center"}}>
+          <div className="btndiv"  style={{display:"flex",flexDirection:"column", alignItems:"center" ,justifyContent:"center"}}>
            <Button
              type="submit"
              fullWidth
@@ -118,6 +126,8 @@ function Addusercomp() {
            >
              Add User
            </Button>
+
+           <a style={{textDecoration:"none"}} href="/users">Return</a>
            </div>
  
          </Box>

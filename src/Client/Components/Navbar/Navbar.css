@@ -2,7 +2,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: royalblue;
+    background-color: rgb(92, 124, 219);
+    
 }
 .Sidebar{
     margin-left:4rem;
@@ -15,5 +16,5 @@
     font-size: 20px;
     font-weight: 300;
     font-family: 'Inter', sans-serif;
-    color:black;
+    color:white;
 }

@@ -6,6 +6,7 @@ import Navbar from "../../Components/Navbar/Navbar"
 
 const Profile = () => {
   const currentUser = AuthService.getCurrentUser();
+  
   return (
     <div className="holder">
     <Navbar/>
@@ -13,7 +14,7 @@ const Profile = () => {
      
      
       <header className="jumbotron">
-        <h1>Profile</h1>
+        <h1>User Profile</h1>
         <img src={userimage} alt="user" className="userimage" />
         <h3>User: {currentUser.username}</h3>
       </header>

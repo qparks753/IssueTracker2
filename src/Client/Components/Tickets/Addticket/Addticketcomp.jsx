@@ -5,6 +5,7 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import axios from "axios"
+import { useNavigate} from "react-router-dom";
 
 function Addticketcomp() {
   const Status = [
@@ -75,7 +76,14 @@ function Addticketcomp() {
 
 
   })
+  routeChange();
 }
+
+let navigate = useNavigate(); 
+ const routeChange = () =>{ 
+   let path = `/tickets`; 
+   navigate(path);
+ }
 
   const handleChange1 = (event) => {
     setStatus(event.target.value);
@@ -96,6 +104,7 @@ function Addticketcomp() {
           justifyContent: "center",
           width: "100%",
           marginLeft: "30px",
+          marginTop:"25px"
         }}
       >
         <Box component="form" sx={{ "& .MuiTextField-root": { m: 1 } }}>
@@ -208,7 +217,7 @@ function Addticketcomp() {
 
             <div
               className="btndiv"
-              style={{ display: "flex", justifyContent: "center" }}
+              style={{ display: "flex",alignItems:"center",flexDirection:"column", justifyContent: "center" }}
             >
               <Button
                 type="submit"
@@ -220,6 +229,8 @@ function Addticketcomp() {
               >
                 Add Ticket
               </Button>
+
+              <a style={{textDecoration:"none"}} href="/tickets">Return</a>
             </div>
           </Box>
         </Box>

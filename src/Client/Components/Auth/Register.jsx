@@ -162,7 +162,7 @@ let navigate = useNavigate();
           )}
           <CheckButton style={{ display: "none" }} ref={checkBtn} />
           <div className="options">
-            <a  href="/register" className="register"  >Log In </a>
+            <a  href="/login" className="register"  >Log In </a>
             <a  href="/" className="home">Home</a>
             </div>
 

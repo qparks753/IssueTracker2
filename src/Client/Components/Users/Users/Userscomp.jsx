@@ -12,16 +12,7 @@ import TablePagination from "@mui/material/TablePagination";
 import TableFooter from "@mui/material/TableFooter";
 import axios from "axios"
 
-// function createData(ID, FirstName, LastName, Email, Phone) {
-//   return { ID, FirstName, LastName, Email, Phone };
-// }
-  
-// const rows = [
-//   createData(1, "Jonathan", "Lee", "JLee4@AOL.com", "888-888-4444"),
-//   createData(2, "Jonathan", "Lee", "JLee4@AOL.com","888-888-4444"),
-//   createData(3, "Jonathan", "Lee", "JLee4@AOL.com","888-888-4444"),
-//   createData(4, "Jonathan", "Lee", "JLee4@AOL.com","888-888-4444"),
-// ];
+
 
 function Userscomp() {
   const [users, setUsers] = useState([]);
@@ -51,6 +42,10 @@ function Userscomp() {
   .then((response)=>{
     console.log(response)
 })
+refreshPage();
+}
+const refreshPage = ()=>{
+  window.location.reload();
 }
 
 
@@ -65,7 +60,7 @@ function Userscomp() {
             style={{
               width: "100%",
 
-              border: "1px solid black",
+              // border: "1px solid black",
             }}
             component={Paper}
           >
@@ -116,10 +111,10 @@ function Userscomp() {
                                to={`/users/updateuser/${user.id}`}
                              
                             >
-                              Edit
+                              Update
                             </Link>
                             <div className="deleteButton ">
-                            <button onClick={()=> DeleteUser(user)}>Delete</button> 
+                            <button className="deleteBtn" onClick={()=> DeleteUser(user)}>Delete</button> 
                                </div>
                           </div>
                         }

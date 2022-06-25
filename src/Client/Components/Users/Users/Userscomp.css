@@ -16,12 +16,12 @@
 
 
 
-.userHeader{
+.userHeader span{
     display: flex;
     justify-content: center;
-    font-size: 26px;
+    font-size: 34px;
     font-weight: 400;
-
+    color:royalblue
 }
 
 .viewButton {
@@ -33,11 +33,12 @@ margin: 5px;
 }
 
 
-.addProject{
-    border:none;
-    background-color: royalblue;
-    border:1px lightgrey;
-    height: 80%;
+.addUserbtn{
+    text-decoration: none;
+}
+
+.addUserbtn:hover{
+    text-decoration: underline;
 }
 
 .footerContainer{
@@ -46,3 +47,4 @@ margin: 5px;
     align-items: center;
    
 }
+

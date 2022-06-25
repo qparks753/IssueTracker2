@@ -4,6 +4,7 @@ import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import axios from 'axios';
+import {useNavigate} from "react-router-dom";
  
 
 const AdditionPage = () => {
@@ -18,10 +19,18 @@ const AdditionPage = () => {
       Contributors:contributors,
       Project_Description:description
     })
+    routeChange();
  }
 
+ let navigate = useNavigate(); 
+ const routeChange = () =>{ 
+   let path = `/projects`; 
+   navigate(path);
+ }
+ 
+
   return (
-   <div className="formContainer" style={{display:"flex", justifyContent:"center", width:"100%", marginLeft:"30px"}}>
+   <div className="formContainer" style={{display:"flex", justifyContent:"center", width:"100%", marginLeft:"30px", marginTop:"20px"}}>
     
      <Box component="form" sx={{ '& .MuiTextField-root': { m: 1 },}}>
      <div className="titleDiv" style={{display:"flex", justifyContent:"center", fontSize:"25px", marginRight:"100px"}} >Add Project</div>
@@ -76,7 +85,7 @@ const AdditionPage = () => {
             </Grid>
             </div>
 
-           <div className="btndiv"  style={{display:"flex", justifyContent:"center"}}>
+           <div className="btndiv"  style={{display:"flex",alignItems:"center",justifyContent:"center", flexDirection:"column"}}>
             <Button
               type="submit"
               fullWidth
@@ -87,6 +96,8 @@ const AdditionPage = () => {
             >
               Add Project
             </Button>
+
+            <a style={{textDecoration:"none"}} href="/projects">Return</a>
             </div>
   
           </Box>

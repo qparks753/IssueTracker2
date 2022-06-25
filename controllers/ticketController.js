@@ -4,7 +4,7 @@ const Ticket = db.tickets;
 
 //Main
 
-// 1.) create ticker
+// 1.) create ticket
 
 const addTicket = async (req, res) => {
     

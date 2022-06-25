@@ -1,10 +1,10 @@
 import React from "react";
 import Navbar from "../../Components/Navbar/Navbar";
 import ProjectsTable from "../../Components/Projects/ProjectsTable";
-import { Type } from "../../Components/Charts/Type.tsx";
+// import { Type } from "../../Components/Charts/Type.tsx";
 import "./Home.scss"
-import { Priority } from "../../Components/Charts/Priority.tsx";
-import { Status } from "../../Components/Charts/Status.tsx"
+// import { Priority } from "../../Components/Charts/Priority.tsx";
+// import { Status } from "../../Components/Charts/Status.tsx"
 
 function Home() {
   return (
@@ -12,9 +12,9 @@ function Home() {
       <Navbar/>
       <ProjectsTable/>
       <div className="chartContainer">
-      <Status />
+      {/* <Status />
       <Type />
-      <Priority/>
+      <Priority/> */}
       </div>
     
 

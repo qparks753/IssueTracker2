@@ -11,20 +11,6 @@ import  {Link} from "react-router-dom"
 import TablePagination from '@mui/material/TablePagination';
 import TableFooter from "@mui/material/TableFooter";
 import axios from "axios";
-// import { Next } from "react-bootstrap/esm/PageItem";
-
-// function createData(id,Project, Contributors, Project_Description) {
-//   return { id,Project, Contributors, Project_Description}
-// }
-
-
-// const rows = [
-//   createData(1,"Frozen yoghurt", "JAN DOE", "Website"),
-//   createData(2,"Frozen yoghurt", "JAN DOE", "Website"),
-//   createData(3,"Frozen yoghurt", "JAN DOE", "Website"),
-//   createData(4,"Frozen yoghurt", "JAN DOe", "Website"),
-  
-// ];
 
 
 const ProjectsTable = () => {
@@ -56,8 +42,13 @@ const ProjectsTable = () => {
       axios.delete(`http://localhost:3001/api/projects/${project.id}`)
       .then((response)=>{
         console.log(response)
+        refreshPage();
     })
   }
+
+  const refreshPage = ()=>{
+    window.location.reload();
+ }
 
 
 
@@ -72,13 +63,13 @@ const ProjectsTable = () => {
           style={{
             width: "100%",
            
-            border: "1px solid black",
+            // border: "1px solid black",
            
            
           }}
           component={Paper}
         >
-          <div className="projectHeader"><span>Projects</span></div>
+          <div id="projectHeader"><span>Projects</span></div>
 
           <Table aria-label="simple table" >
 
@@ -116,10 +107,10 @@ const ProjectsTable = () => {
                            to={`/projects/updateproject/${project.id}`}
                          
                         >
-                          Edit
+                          Update
                         </Link>
                         <div className="deleteButton ">
-                          <button onClick={()=> DeleteProject(project)}>Delete</button> 
+                          <button className="deleteBtn" onClick={()=> DeleteProject(project)}>Delete</button> 
                           
                           </div>
                       </div>

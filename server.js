@@ -25,22 +25,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //cookie session
-const COOKIE_SECRET = process.env.COOKIE_SECRET;
+
 app.use(
   cookieSession({
-    name:"issuetracker-session",
-    secret: COOKIE_SECRET,
+    name:process.env.REACT_APP_COOKIE_NAME,
+     secret: process.env.REACT_APP_COOKIE_INFO,
     httpOnly:true
   })
 );
 // simple route
-
-
-
-// app.get("/", (req, res) => {
-//   res.json({ message: "Welcome to the issue tracker application." });
-// });
-
 
 const router = require("./routes/projectRouter")
 app.use("/api/projects",router)
@@ -51,19 +44,10 @@ app.use("/api/tickets", router2)
 const router3 = require("./routes/userRouter")
 app.use("/api/users", router3)
 
-//  app.use(express.static(path.join(__dirname,"./public")))
-
-// app.get("/", (req, res) => {
-//   res.sendFile(path.join(__dirname,"./public/index.html"))
-// });
-
-// app.get("/api",(req,res)=>{
-//   res.sendFile(path.join(__dirname,"./server.js"))
-// })
 
 const db = require("./models");
 
-const Role = db.role;
+// const Role = db.role;
 
 // db.sequelize.sync({force:true})
 // .then(()=>{
@@ -71,24 +55,7 @@ const Role = db.role;
 //   initial();
 // });
 
-// db.sequelize.sync();
-
-// function initial() {
-//   Role.create({
-//     id: 1,
-//     name: "user"
-//   });
- 
-//   Role.create({
-//     id: 2,
-//     name: "moderator"
-//   });
- 
-//   Role.create({
-//     id: 3,
-//     name: "admin"
-//   });
-// }
+ db.sequelize.sync();
 
 
 // routes

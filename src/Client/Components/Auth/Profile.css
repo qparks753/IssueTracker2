@@ -28,3 +28,7 @@ header *{
  
 
 }
+.jumbotron h1{
+    font-size: 34px;
+    font-weight: 400;
+}

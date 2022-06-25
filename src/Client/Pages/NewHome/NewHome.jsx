@@ -9,7 +9,7 @@ const NewHome = () => {
       <Navbar />
       <div className="homeBodyDiv">
         <div className="showcase">
-          <h4>Welcome To Issue Tracker</h4>
+          <h4>Welcome To IssueTracker</h4>
           <h5> Fast, Simple, Effective </h5>
           <p>
             Issue Tracker offers a fast and sleek application issue tracking

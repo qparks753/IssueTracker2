@@ -14,7 +14,7 @@ const AdditionPage = () => {
  const [description, setDescription] = useState("");
 
  function postProject(){
-    axios.post("http://localhost:3001/api/projects/addProjects",{
+    axios.post(" https://issuetracker-heroku.herokuapp.com/api/projects/addProjects",{
       Project:project,
       Contributors:contributors,
       Project_Description:description

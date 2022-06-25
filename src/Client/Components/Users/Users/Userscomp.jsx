@@ -30,7 +30,7 @@ function Userscomp() {
 
   useEffect(()=>{
 
-    axios.get("http://localhost:3001/api/users/allUsers")
+    axios.get(" https://issuetracker-heroku.herokuapp.com/api/users/allUsers")
     .then((response)=>{
      setUsers(response.data)
     
@@ -38,7 +38,7 @@ function Userscomp() {
  },[])
 
  function DeleteUser(user){
-  axios.delete(`http://localhost:3001/api/users/${user.id}`)
+  axios.delete(` https://issuetracker-heroku.herokuapp.com/api/users/${user.id}`)
   .then((response)=>{
     console.log(response)
 })

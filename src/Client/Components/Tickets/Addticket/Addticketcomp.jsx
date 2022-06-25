@@ -66,7 +66,7 @@ function Addticketcomp() {
 
 
  function postTicket(){
-  axios.post("http://localhost:3001/api/tickets/addTickets",{
+  axios.post(" https://issuetracker-heroku.herokuapp.com/api/tickets/addTickets",{
     Ticket_Title:title,
     Author:author,
     Description:description,

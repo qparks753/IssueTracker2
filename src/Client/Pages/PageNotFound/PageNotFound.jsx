@@ -12,7 +12,7 @@ function PageNotFound() {
             We were unable to find the page you were looking for, but working
             hard to resolve this issue.
           </p>
-          <a href="http://www.localhost:3000" target="_blank" rel="noreferrer">
+          <a href="https://issuetracker-heroku.herokuapp.com" target="_blank" rel="noreferrer">
             IssueTracker.com
           </a>
           <div className="imgContainer">

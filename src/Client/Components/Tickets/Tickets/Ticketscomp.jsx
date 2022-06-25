@@ -29,7 +29,7 @@ function Ticketscomp() {
 
   useEffect(()=>{
 
-    axios.get("http://localhost:3001/api/tickets/allTickets")
+    axios.get(" https://issuetracker-heroku.herokuapp.com/api/tickets/allTickets")
     .then((response)=>{
      setTickets(response.data)
     
@@ -40,7 +40,7 @@ function Ticketscomp() {
 
 
  function DeleteTicket(ticket){
-  axios.delete(`http://localhost:3001/api/tickets/${ticket.id}`)
+  axios.delete(` https://issuetracker-heroku.herokuapp.com/api/tickets/${ticket.id}`)
   .then((response)=>{
     console.log(response)
 })

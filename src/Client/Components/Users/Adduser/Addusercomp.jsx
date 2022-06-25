@@ -14,7 +14,7 @@ function Addusercomp() {
  
   
  function postUser(){
-  axios.post("http://localhost:3001/api/users/addUser",{
+  axios.post(" https://issuetracker-heroku.herokuapp.com/api/users/addUser",{
     FirstName:firstName,
     LastName:lastName,
     Email:email,

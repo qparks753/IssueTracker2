@@ -19,7 +19,7 @@ function Updateusercomp() {
 
   useEffect(()=>{
 
-    axios.get(`http://localhost:3001/api/users/${userID.id}`)
+    axios.get(` https://issuetracker-heroku.herokuapp.com/api/users/${userID.id}`)
     .then((response)=>{
      setUserData(response.data)
      console.log(response.data)
@@ -50,7 +50,7 @@ function updateuser () {
      "Phone": phone
    }
 
-  axios.put(`http://localhost:3001/api/users/${userID.id}`, data)
+  axios.put(` https://issuetracker-heroku.herokuapp.com/api/users/${userID.id}`, data)
   .then((data)=> {
     console.log(data);
     

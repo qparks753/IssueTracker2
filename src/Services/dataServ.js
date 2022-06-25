@@ -1,19 +1,19 @@
 import axios from "axios"
 
 const getPublicContent =() =>{
-    return axios.get("http://localhost:3001/api/test/all")
+    return axios.get("https://issuetracker-heroku.herokuapp.com/api/test/all")
 }
 
 const getUserBoard = () =>{
-    return axios.get("http://localhost:3001/api/test/user")
+    return axios.get("https://issuetracker-heroku.herokuapp.com/api/test/user")
 }
 
 const getModeratorBoard = () => {
-    return axios.get("http://localhost:3001/api/test/mod");
+    return axios.get("https://issuetracker-heroku.herokuapp.com/api/test/mod");
 };
 
 const getAdminBoard = () => {
-    return axios.get("http://localhost:3001/api/test/admin");
+    return axios.get("https://issuetracker-heroku.herokuapp.com/api/test/admin");
 };
 
 const DataService = {

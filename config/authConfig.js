@@ -1,6 +1,7 @@
+/* eslint-disable no-undef */
 require("dotenv").config();
 
 module.exports = {
     
-    secret: process.env.REACT_APP_AUTH_INFO
+    secret: REACT_APP_AUTH
   };

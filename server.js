@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const express = require("express");
 // const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -28,8 +29,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(
   cookieSession({
-    name:process.env.REACT_APP_COOKIE_NAME,
-     secret: process.env.REACT_APP_COOKIE_INFO,
+    name: REACT_APP_COOK_NAME,
+     secret: REACT_APP_COOK,
     httpOnly:true
   })
 );

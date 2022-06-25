@@ -2,7 +2,7 @@ import axios from "axios"
 
 
 const register =(username, email, password) =>{
-    return axios.post("http://localhost:3001/api/auth/signup",{
+    return axios.post(" https://issuetracker-heroku.herokuapp.com/api/auth/signup",{
         username,
         email,
         password,
@@ -10,7 +10,7 @@ const register =(username, email, password) =>{
 };
 
 const login = (username, password) =>{
-    return axios.post("http://localhost:3001/api/auth/signin",{
+    return axios.post(" https://issuetracker-heroku.herokuapp.com/api/auth/signin",{
         username,
         password,
     })
@@ -24,7 +24,7 @@ const login = (username, password) =>{
 
 const logout = () => {
     localStorage.removeItem("user");
-    return axios.post("http://localhost:3001/api/auth/signout").then((response) => {
+    return axios.post(" https://issuetracker-heroku.herokuapp.com/api/auth/signout").then((response) => {
       return response.data;
     });
 };

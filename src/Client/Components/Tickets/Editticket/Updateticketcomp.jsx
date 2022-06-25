@@ -92,7 +92,7 @@ function Updateticketcomp() {
 
   useEffect(()=>{
 
-    axios.get(`http://localhost:3001/api/tickets/${ticketID.id}`)
+    axios.get(` https://issuetracker-heroku.herokuapp.com/api/tickets/${ticketID.id}`)
     .then((response)=>{
      setTicketData(response.data)
      
@@ -112,7 +112,7 @@ function Updateticketcomp() {
 
   }
 
- axios.put(`http://localhost:3001/api/tickets/${ticketID.id}`, data)
+ axios.put(` https://issuetracker-heroku.herokuapp.com/api/tickets/${ticketID.id}`, data)
  .then((data)=> {
    console.log(data);
    

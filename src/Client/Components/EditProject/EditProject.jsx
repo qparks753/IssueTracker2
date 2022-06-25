@@ -17,7 +17,7 @@ const EditProject = () => {
 
  useEffect(()=>{
 
-  axios.get(`http://localhost:3001/api/projects/${projectID.id}`)
+  axios.get(` https://issuetracker-heroku.herokuapp.com/api/projects/${projectID.id}`)
   .then((response)=>{
    setProjectData(response.data)
    console.log(response.data)
@@ -34,7 +34,7 @@ const EditProject = () => {
       "Project_Description": description
     }
 
-    axios.put(`http://localhost:3001/api/projects/${projectID.id}`, data)
+    axios.put(` https://issuetracker-heroku.herokuapp.com/api/projects/${projectID.id}`, data)
     .then((data)=> {
       console.log(data);
       

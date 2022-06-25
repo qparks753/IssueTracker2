@@ -30,7 +30,7 @@ const ProjectsTable = () => {
 
   useEffect(()=>{
 
-     axios.get("http://localhost:3001/api/projects/allProjects")
+     axios.get(" https://issuetracker-heroku.herokuapp.com/api/projects/allProjects")
      .then((response)=>{
       setProjects(response.data)
      
@@ -39,7 +39,7 @@ const ProjectsTable = () => {
 
 
   function DeleteProject(project){
-      axios.delete(`http://localhost:3001/api/projects/${project.id}`)
+      axios.delete(` https://issuetracker-heroku.herokuapp.com/api/projects/${project.id}`)
       .then((response)=>{
         console.log(response)
         refreshPage();

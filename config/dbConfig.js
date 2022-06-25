@@ -8,9 +8,6 @@ module.exports = {
     DB: REACT_APP_DBNAME,
     dialect: REACT_APP_dialect,
 
-    
-    
-
     pool: {
       max: 5,
       min: 0,
